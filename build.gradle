@@ -1,0 +1,29 @@
+// プラグイン定義 利用できるタスク(gradle tasks)が増える
+apply {
+    plugin 'groovy'
+    plugin 'idea'
+}
+
+apply from: file('etc/gradle/base/java.gradle')
+
+clean {
+    // "gradle clean"を実行した際に、Tomcat用の出力先も削除対象とする
+    delete << 'src/main/webapp/WEB-INF/classes'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14'
+    jarFile = "${project.projectDir}/etc/gradle/base/wrapper/gradle-wrapper.jar"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.codehaus.groovy:groovy-all:2.4.4"
+
+    testCompile "junit:junit:4.12"
+    testCompile "org.springframework:spring-test:4.3.0.RELEASE"
+    testCompile "org.spockframework:spock-spring:1.0-groovy-2.4"
+}
