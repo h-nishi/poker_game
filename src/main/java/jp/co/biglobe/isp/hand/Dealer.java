@@ -58,7 +58,7 @@ public class Dealer {
 
     private static boolean isOnePare(Hand hand) {
         return hand.getTrumps().stream()
-                .map(Trump::getRank)
+                .map(Trump::getRankValue)
                 .collect(Collectors.groupingBy(v -> v))
                 .entrySet()
                 .stream()
@@ -68,7 +68,7 @@ public class Dealer {
 
     private static boolean isTwoPare(Hand hand) {
         return hand.getTrumps().stream()
-                .map(Trump::getRank)
+                .map(Trump::getRankValue)
                 .collect(Collectors.groupingBy(v -> v))
                 .entrySet()
                 .stream()
@@ -78,7 +78,7 @@ public class Dealer {
 
     private static boolean isThreeCard(Hand hand) {
         return hand.getTrumps().stream()
-                .map(Trump::getRank)
+                .map(Trump::getRankValue)
                 .collect(Collectors.groupingBy(v -> v))
                 .entrySet()
                 .stream()
@@ -88,7 +88,7 @@ public class Dealer {
 
     private static boolean isFourCard(Hand hand) {
         return hand.getTrumps().stream()
-                .map(Trump::getRank)
+                .map(Trump::getRankValue)
                 .collect(Collectors.groupingBy(v -> v))
                 .entrySet()
                 .stream()
@@ -98,7 +98,7 @@ public class Dealer {
 
     private static boolean isFiveCard(Hand hand) {
         return hand.getTrumps().stream()
-                .map(Trump::getRank)
+                .map(Trump::getRankValue)
                 .collect(Collectors.groupingBy(v -> v))
                 .entrySet()
                 .stream()
@@ -122,7 +122,7 @@ public class Dealer {
 
     private static boolean isStraight(Hand hand) {
         List<Integer> list = hand.getTrumps().stream()
-                .map(v -> v.getRank().getRank())
+                .map(Trump::getRankValue)
                 .sorted(Comparator.naturalOrder())
                 .collect(Collectors.toList());
         return isStraightList(list) || isRoyal(hand);
@@ -130,7 +130,7 @@ public class Dealer {
 
     private static boolean isRoyal(Hand hand) {
         List<Integer> list = hand.getTrumps().stream()
-                .map(v -> v.getRank().getRank())
+                .map(Trump::getRankValue)
                 .sorted(Comparator.naturalOrder())
                 .collect(Collectors.toList());
         return isRoyalList(list);

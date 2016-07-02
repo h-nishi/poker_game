@@ -23,7 +23,7 @@ public class PlainTrump implements Trump {
     }
 
     @Override
-    public Rank getRank() {
-        return rank;
+    public int getRankValue() {
+        return rank.getRank();
     }
 }

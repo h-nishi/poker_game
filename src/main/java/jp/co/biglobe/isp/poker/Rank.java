@@ -3,7 +3,7 @@ package jp.co.biglobe.isp.poker;
 /**
  * 絵札と数札
  */
-public enum Rank {
+public enum Rank implements RankGeneral {
     A(1),
     _2(2),
     _3(3),
@@ -16,8 +16,7 @@ public enum Rank {
     _10(10),
     _11(11),
     _12(12),
-    _13(13),
-    ジョーカー(0);
+    _13(13);
 
     private final int rank;
 

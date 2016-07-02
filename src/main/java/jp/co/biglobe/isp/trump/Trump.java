@@ -1,13 +1,12 @@
 package jp.co.biglobe.isp.trump;
 
-import jp.co.biglobe.isp.poker.Rank;
-import jp.co.biglobe.isp.poker.Soot;
+import jp.co.biglobe.isp.poker.SootGeneral;
 
 /**
  * トランプ
  */
 public interface Trump {
-    Soot getSoot();
+    SootGeneral getSoot();
 
-    Rank getRank();
+    int getRankValue();
 }
