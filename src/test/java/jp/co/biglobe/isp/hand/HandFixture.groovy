@@ -57,21 +57,21 @@ class HandFixture {
         return deal(trump(クローバー, A), trump(クローバー, _10), trump(クローバー, _13), trump(クローバー, _11), trump(クローバー, _12))
     }
 
-    public static List<Trump> 何もない() {
+    public static List<Trump> ノーペア() {
         return deal(trump(クローバー, A), trump(ハート, _6), trump(クローバー, _2), trump(クローバー, _3), trump(クローバー, _4))
     }
 
     /************************************************************************************
      *  以降の記述は補助用のメソッドを用意しているだけなので、気にしないで下さい。
      ************************************************************************************/
-    private static PlainTrump trump(
+    public static PlainTrump trump(
             Soot soot,
             Rank rank
     ) {
         return new PlainTrump(soot, rank);
     }
 
-    private static List<Trump> deal(
+    public static List<Trump> deal(
             Trump trump1,
             Trump trump2,
             Trump trump3,

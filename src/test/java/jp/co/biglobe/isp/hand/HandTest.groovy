@@ -14,10 +14,11 @@ class HandTest extends Specification {
 
     def "IsOnePare_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
 
-        Hand sut = Hand.cheating(trumps);
+        setup:
+        Hand hand = Hand.cheating(trumps);
 
         expect:
-        sut.isOnePare() == expected
+        Dealer.isOnePare(hand) == expected
 
         where:
         useCase          | trumps           | expected
@@ -32,16 +33,17 @@ class HandTest extends Specification {
         "ロイヤル　　　　　　　　　　" | ロイヤル()           | false
         "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | false
         "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | false
-        "何もない　　　　　　　　　　" | 何もない()           | false
+        "ノーペア　　　　　　　　　　" | ノーペア()           | false
 
     }
 
     def "IsTwoPare_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
 
-        Hand sut = Hand.cheating(trumps);
+        setup:
+        Hand hand = Hand.cheating(trumps);
 
         expect:
-        sut.isTwoPare() == expected
+        Dealer.isTwoPare(hand) == expected
 
         where:
         useCase          | trumps           | expected
@@ -56,16 +58,17 @@ class HandTest extends Specification {
         "ロイヤル　　　　　　　　　　" | ロイヤル()           | false
         "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | false
         "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | false
-        "何もない　　　　　　　　　　" | 何もない()           | false
+        "ノーペア　　　　　　　　　　" | ノーペア()           | false
 
     }
 
     def "IsThreeCard_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
 
-        Hand sut = Hand.cheating(trumps);
+        setup:
+        Hand hand = Hand.cheating(trumps);
 
         expect:
-        sut.isThreeCard() == expected
+        Dealer.isThreeCard(hand) == expected
 
         where:
         useCase          | trumps           | expected
@@ -80,16 +83,17 @@ class HandTest extends Specification {
         "ロイヤル　　　　　　　　　　" | ロイヤル()           | false
         "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | false
         "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | false
-        "何もない　　　　　　　　　　" | 何もない()           | false
+        "ノーペア　　　　　　　　　　" | ノーペア()           | false
 
     }
 
     def "IsFourCard_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
 
-        Hand sut = Hand.cheating(trumps);
+        setup:
+        Hand hand = Hand.cheating(trumps);
 
         expect:
-        sut.isFourCard() == expected
+        Dealer.isFourCard(hand) == expected
 
         where:
         useCase          | trumps           | expected
@@ -104,16 +108,17 @@ class HandTest extends Specification {
         "ロイヤル　　　　　　　　　　" | ロイヤル()           | false
         "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | false
         "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | false
-        "何もない　　　　　　　　　　" | 何もない()           | false
+        "ノーペア　　　　　　　　　　" | ノーペア()           | false
 
     }
 
     def "IsFiveCard_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
 
-        Hand sut = Hand.cheating(trumps);
+        setup:
+        Hand hand = Hand.cheating(trumps);
 
         expect:
-        sut.isFiveCard() == expected
+        Dealer.isFiveCard(hand) == expected
 
         where:
         useCase          | trumps           | expected
@@ -128,16 +133,17 @@ class HandTest extends Specification {
         "ロイヤル　　　　　　　　　　" | ロイヤル()           | false
         "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | false
         "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | false
-        "何もない　　　　　　　　　　" | 何もない()           | false
+        "ノーペア　　　　　　　　　　" | ノーペア()           | false
 
     }
 
-    def "IsFlash_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsFlush_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
 
-        Hand sut = Hand.cheating(trumps);
+        setup:
+        Hand hand = Hand.cheating(trumps);
 
         expect:
-        sut.isFlash() == expected
+        Dealer.isFlush(hand) == expected
 
         where:
         useCase          | trumps           | expected
@@ -152,16 +158,17 @@ class HandTest extends Specification {
         "ロイヤル　　　　　　　　　　" | ロイヤル()           | false
         "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | true
         "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | true
-        "何もない　　　　　　　　　　" | 何もない()           | false
+        "ノーペア　　　　　　　　　　" | ノーペア()           | false
 
     }
 
     def "IsFullHouse_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
 
-        Hand sut = Hand.cheating(trumps);
+        setup:
+        Hand hand = Hand.cheating(trumps);
 
         expect:
-        sut.isFullHouse() == expected
+        Dealer.isFullHouse(hand) == expected
 
         where:
         useCase          | trumps           | expected
@@ -176,16 +183,17 @@ class HandTest extends Specification {
         "ロイヤル　　　　　　　　　　" | ロイヤル()           | false
         "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | false
         "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | false
-        "何もない　　　　　　　　　　" | 何もない()           | false
+        "ノーペア　　　　　　　　　　" | ノーペア()           | false
 
     }
 
     def "IsStraight_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
 
-        Hand sut = Hand.cheating(trumps);
+        setup:
+        Hand hand = Hand.cheating(trumps);
 
         expect:
-        sut.isStraight() == expected
+        Dealer.isStraight(hand) == expected
 
         where:
         useCase          | trumps           | expected
@@ -200,15 +208,16 @@ class HandTest extends Specification {
         "ロイヤル　　　　　　　　　　" | ロイヤル()           | true
         "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | true
         "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | true
-        "何もない　　　　　　　　　　" | 何もない()           | false
+        "ノーペア　　　　　　　　　　" | ノーペア()           | false
     }
 
     def "IsRoyal_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
 
-        Hand sut = Hand.cheating(trumps);
+        setup:
+        Hand hand = Hand.cheating(trumps);
 
         expect:
-        sut.isRoyal() == expected
+        Dealer.isRoyal(hand) == expected
 
         where:
         useCase          | trumps           | expected
@@ -223,16 +232,17 @@ class HandTest extends Specification {
         "ロイヤル　　　　　　　　　　" | ロイヤル()           | true
         "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | false
         "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | true
-        "何もない　　　　　　　　　　" | 何もない()           | false
+        "ノーペア　　　　　　　　　　" | ノーペア()           | false
 
     }
 
-    def "IsStraightFlash#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsStraightFlush_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
 
-        Hand sut = Hand.cheating(trumps);
+        setup:
+        Hand hand = Hand.cheating(trumps);
 
         expect:
-        sut.isStraightFlash() == expected
+        Dealer.isStraightFlush(hand) == expected
 
         where:
         useCase          | trumps           | expected
@@ -247,16 +257,17 @@ class HandTest extends Specification {
         "ロイヤル　　　　　　　　　　" | ロイヤル()           | false
         "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | true
         "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | true
-        "何もない　　　　　　　　　　" | 何もない()           | false
+        "ノーペア　　　　　　　　　　" | ノーペア()           | false
 
     }
 
-    def "IsRoyalStraightFlash#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsRoyalStraightFlush_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
 
-        Hand sut = Hand.cheating(trumps);
+        setup:
+        Hand hand = Hand.cheating(trumps);
 
         expect:
-        sut.isRoyalStraightFlash() == expected
+        Dealer.isRoyalStraightFlush(hand) == expected
 
         where:
         useCase          | trumps           | expected
@@ -271,8 +282,8 @@ class HandTest extends Specification {
         "ロイヤル　　　　　　　　　　" | ロイヤル()           | false
         "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | false
         "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | true
-        "何もない　　　　　　　　　　" | 何もない()           | false
+        "ノーペア　　　　　　　　　　" | ノーペア()           | false
 
     }
-    
+
 }
