@@ -9,4 +9,6 @@ public interface Trump {
     SootGeneral getSoot();
 
     int getRankValue();
+    
+    boolean isJoker();
 }

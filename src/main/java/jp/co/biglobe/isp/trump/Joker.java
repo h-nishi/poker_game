@@ -24,5 +24,10 @@ public enum Joker implements Trump, RankGeneral, SootGeneral {
         return 0;
     }
 
+    @Override
+    public boolean isJoker() {
+        return true;
+    }
+
 
 }

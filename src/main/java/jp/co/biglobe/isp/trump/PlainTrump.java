@@ -26,4 +26,9 @@ public class PlainTrump implements Trump {
     public int getRankValue() {
         return rank.getRank();
     }
+
+    @Override
+    public boolean isJoker() {
+        return false;
+    }
 }

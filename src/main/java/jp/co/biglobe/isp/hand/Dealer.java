@@ -57,83 +57,68 @@ public class Dealer {
     }
 
     private static boolean isOnePare(Hand hand) {
-        return hand.getTrumps().stream()
-                .map(Trump::getRankValue)
-                .collect(Collectors.groupingBy(v -> v))
-                .entrySet()
-                .stream()
-                .filter(v -> v.getValue().size() == 2)
-                .count() == 1;
+        if (hand.isContainsJoker()) {
+            return hand.hasGroupRank(1, 5);
+        }
+        return hand.hasGroupRank(2, 1);
     }
 
     private static boolean isTwoPare(Hand hand) {
-        return hand.getTrumps().stream()
-                .map(Trump::getRankValue)
-                .collect(Collectors.groupingBy(v -> v))
-                .entrySet()
-                .stream()
-                .filter(v -> v.getValue().size() == 2)
-                .count() == 2;
+        if (hand.isContainsJoker()) {
+            return hand.hasGroupRank(2, 1);
+        }
+        return hand.hasGroupRank(2, 2);
     }
 
     private static boolean isThreeCard(Hand hand) {
-        return hand.getTrumps().stream()
-                .map(Trump::getRankValue)
-                .collect(Collectors.groupingBy(v -> v))
-                .entrySet()
-                .stream()
-                .filter(v -> v.getValue().size() == 3)
-                .count() == 1;
+        if (hand.isContainsJoker()) {
+            return hand.hasGroupRank(2, 1);
+        }
+        return hand.hasGroupRank(3, 1);
     }
 
     private static boolean isFourCard(Hand hand) {
-        return hand.getTrumps().stream()
-                .map(Trump::getRankValue)
-                .collect(Collectors.groupingBy(v -> v))
-                .entrySet()
-                .stream()
-                .filter(v -> v.getValue().size() == 4)
-                .count() == 1;
+        if (hand.isContainsJoker()) {
+            return hand.hasGroupRank(3, 1);
+        }
+        return hand.hasGroupRank(4, 1);
     }
 
     private static boolean isFiveCard(Hand hand) {
-        return hand.getTrumps().stream()
-                .map(Trump::getRankValue)
-                .collect(Collectors.groupingBy(v -> v))
-                .entrySet()
-                .stream()
-                .filter(v -> v.getValue().size() == 5)
-                .count() == 1;
+        if (hand.isContainsJoker()) {
+            return hand.hasGroupRank(4, 1);
+        }
+        return false;
     }
 
     private static boolean isFlush(Hand hand) {
-        return hand.getTrumps().stream()
-                .map(Trump::getSoot)
-                .collect(Collectors.groupingBy(v -> v))
-                .entrySet()
-                .stream()
-                .filter(v -> v.getValue().size() == 5)
-                .count() == 1;
+        if (hand.isContainsJoker()) {
+            return hand.hasGroupSoot(4, 1);
+        }
+        return hand.hasGroupSoot(5, 1);
     }
-
+    
     private static boolean isFullHouse(Hand hand) {
+        if (hand.isContainsJoker()) {
+            return hand.hasGroupRank(3, 1) || hand.hasGroupRank(2, 2);
+        }
         return isThreeCard(hand) && isOnePare(hand);
     }
 
     private static boolean isStraight(Hand hand) {
-        List<Integer> list = hand.getTrumps().stream()
-                .map(Trump::getRankValue)
-                .sorted(Comparator.naturalOrder())
-                .collect(Collectors.toList());
-        return isStraightList(list) || isRoyal(hand);
+        List<Integer> list = getRankList(hand);
+        return isStraightList(list) || isRoyalList(list);
     }
 
     private static boolean isRoyal(Hand hand) {
-        List<Integer> list = hand.getTrumps().stream()
+        return isRoyalList(getRankList(hand));
+    }
+
+    private static List<Integer> getRankList(Hand hand) {
+        return hand.getTrumps().stream()
                 .map(Trump::getRankValue)
                 .sorted(Comparator.naturalOrder())
                 .collect(Collectors.toList());
-        return isRoyalList(list);
     }
 
     private static boolean isStraightFlush(Hand hand) {
@@ -141,7 +126,7 @@ public class Dealer {
     }
 
     private static boolean isRoyalStraightFlush(Hand hand) {
-        return isRoyal(hand) && isStraight(hand) && isFlush(hand);
+        return isRoyal(hand) && isFlush(hand);
     }
 
     private static boolean isStraightList(List<Integer> list) {

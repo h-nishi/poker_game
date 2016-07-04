@@ -2,6 +2,7 @@ package jp.co.biglobe.isp.hand
 
 import jp.co.biglobe.isp.poker.Rank
 import jp.co.biglobe.isp.poker.Soot
+import jp.co.biglobe.isp.trump.Joker
 import jp.co.biglobe.isp.trump.PlainTrump
 import jp.co.biglobe.isp.trump.Trump
 
@@ -17,29 +18,62 @@ class HandFixture {
         return deal(trump(クローバー, A), trump(ハート, A), trump(クローバー, _2), trump(クローバー, _3), trump(クローバー, _4))
     }
 
+    public static List<Trump> ワンペア_JOKER() {
+        return deal(trump(クローバー, A), Joker.JOKER, trump(クローバー, _2), trump(クローバー, _3), trump(クローバー, _4))
+    }
+
     public static List<Trump> ツーペア() {
         return deal(trump(クローバー, A), trump(ハート, A), trump(クローバー, _2), trump(クローバー, _2), trump(クローバー, _4))
+    }
+
+    public static List<Trump> ツーペア_JOKER() {
+        return deal(trump(クローバー, A), trump(ハート, A), Joker.JOKER, trump(クローバー, _2), trump(クローバー, _4))
     }
 
     public static List<Trump> スリーカード() {
         return deal(trump(クローバー, A), trump(ハート, A), trump(ダイヤ, A), trump(クローバー, _2), trump(クローバー, _4))
     }
 
+    public static List<Trump> スリーカード_JOKER() {
+        return deal(trump(クローバー, A), trump(ハート, A), Joker.JOKER, trump(クローバー, _2), trump(クローバー, _4))
+    }
+
     public static List<Trump> フォーカード() {
         return deal(trump(クローバー, A), trump(ハート, A), trump(ダイヤ, A), trump(クローバー, A), trump(クローバー, _4))
+    }
+
+    public static List<Trump> フォーカード_JOKER() {
+        return deal(trump(クローバー, A), trump(ハート, A), trump(ダイヤ, A), Joker.JOKER, trump(クローバー, _4))
     }
 
     public static List<Trump> ファイブカード() {
         return deal(trump(クローバー, A), trump(ハート, A), trump(ダイヤ, A), trump(クローバー, A), trump(クローバー, A))
     }
 
+    public static List<Trump> ファイブカード_JOKER() {
+        return deal(trump(クローバー, A), trump(ハート, A), trump(ダイヤ, A), Joker.JOKER, trump(スペード, A))
+    }
+
     public static List<Trump> フラッシュ() {
         return deal(trump(クローバー, A), trump(クローバー, _2), trump(クローバー, _4), trump(クローバー, _5), trump(クローバー, _6))
+    }
+
+    public static List<Trump> フラッシュ_JOKER() {
+        return deal(trump(クローバー, A), trump(クローバー, _2), trump(クローバー, _4), trump(クローバー, _5), Joker.JOKER)
     }
 
     public static List<Trump> フルハウス() {
         return deal(trump(クローバー, A), trump(ハート, A), trump(クローバー, A), trump(ハート, _5), trump(クローバー, _5))
     }
+
+    public static List<Trump> フルハウス_3_1_JOKER() {
+        return deal(trump(クローバー, A), trump(ハート, A), trump(クローバー, A), trump(ハート, _5), Joker.JOKER)
+    }
+
+    public static List<Trump> フルハウス_2_2_JOKER() {
+        return deal(trump(クローバー, A), trump(ハート, A), Joker.JOKER, trump(ハート, _5), trump(クローバー, _5))
+    }
+
 
     public static List<Trump> ストレート() {
         return deal(trump(クローバー, A), trump(ハート, _2), trump(クローバー, _3), trump(ハート, _4), trump(クローバー, _5))
