@@ -101,6 +101,7 @@ public class Dealer {
         return isThreeCard(hand) && isOnePare(hand);
     }
 
+    // todo : ジョーカーの場合の判定が入っていない
     private static boolean isStraight(Hand hand) {
         List<Integer> list = hand.getRankList();
         return isStraightList(list) || isRoyalList(list);

@@ -14,6 +14,13 @@ import static jp.co.biglobe.isp.poker.Soot.ハート
  */
 class DealerTest extends Specification {
 
+    /**
+     * 
+     * テストコードを追加してもらうための、サンプル
+     * 　useCase : 評価観点(日本語でOK)
+     * 　trumps  : 評価データ(テストしたい条件を満たすデータの組み合わせ)
+     * 　useCase : 期待値(期待するテストの結果)
+     */
     def "JudgeHand2_#useCase"(String useCase, List<Card> trumps, WinningHand expected) {
 
         setup:
