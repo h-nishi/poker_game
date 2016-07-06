@@ -6,7 +6,7 @@ import jp.co.biglobe.isp.poker.SootGeneral;
 /**
  * ジョーカー
  */
-public enum Joker implements Trump, RankGeneral, SootGeneral {
+public enum Joker implements Card, RankGeneral, SootGeneral {
     JOKER;
 
     @Override
@@ -25,8 +25,8 @@ public enum Joker implements Trump, RankGeneral, SootGeneral {
     }
 
     @Override
-    public boolean isJoker() {
-        return true;
+    public boolean isPlainTrump() {
+        return false;
     }
 
 

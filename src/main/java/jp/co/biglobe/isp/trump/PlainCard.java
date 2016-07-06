@@ -6,13 +6,13 @@ import jp.co.biglobe.isp.poker.Soot;
 /**
  * トランプ
  */
-public class PlainTrump implements Trump {
+public class PlainCard implements Card {
 
     private final Soot soot;
 
     private final Rank rank;
 
-    public PlainTrump(Soot soot, Rank rank) {
+    public PlainCard(Soot soot, Rank rank) {
         this.soot = soot;
         this.rank = rank;
     }
@@ -28,7 +28,7 @@ public class PlainTrump implements Trump {
     }
 
     @Override
-    public boolean isJoker() {
-        return false;
+    public boolean isPlainTrump() {
+        return true;
     }
 }

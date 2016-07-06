@@ -5,10 +5,10 @@ import jp.co.biglobe.isp.poker.SootGeneral;
 /**
  * トランプ
  */
-public interface Trump {
+public interface Card {
     SootGeneral getSoot();
 
     int getRankValue();
     
-    boolean isJoker();
+    boolean isPlainTrump();
 }

@@ -1,10 +1,6 @@
 package jp.co.biglobe.isp.hand;
 
-import jp.co.biglobe.isp.trump.Trump;
-
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * ディーラー
@@ -97,7 +93,7 @@ public class Dealer {
         }
         return hand.hasGroupSoot(5, 1);
     }
-    
+
     private static boolean isFullHouse(Hand hand) {
         if (hand.isContainsJoker()) {
             return hand.hasGroupRank(3, 1) || hand.hasGroupRank(2, 2);
@@ -106,19 +102,12 @@ public class Dealer {
     }
 
     private static boolean isStraight(Hand hand) {
-        List<Integer> list = getRankList(hand);
+        List<Integer> list = hand.getRankList();
         return isStraightList(list) || isRoyalList(list);
     }
 
     private static boolean isRoyal(Hand hand) {
-        return isRoyalList(getRankList(hand));
-    }
-
-    private static List<Integer> getRankList(Hand hand) {
-        return hand.getTrumps().stream()
-                .map(Trump::getRankValue)
-                .sorted(Comparator.naturalOrder())
-                .collect(Collectors.toList());
+        return isRoyalList(hand.getRankList());
     }
 
     private static boolean isStraightFlush(Hand hand) {
@@ -136,13 +125,11 @@ public class Dealer {
             if (e == -1) {
                 e = i;
             }
-
             if (e == i) {
                 e++;
                 continue;
             }
             return false;
-
         }
         return true;
     }

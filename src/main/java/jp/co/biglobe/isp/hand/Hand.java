@@ -1,9 +1,10 @@
 package jp.co.biglobe.isp.hand;
 
 import jp.co.biglobe.isp.Deck.Deck;
+import jp.co.biglobe.isp.trump.Card;
 import jp.co.biglobe.isp.trump.Joker;
-import jp.co.biglobe.isp.trump.Trump;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -12,10 +13,10 @@ import java.util.stream.Collectors;
  */
 public class Hand {
 
-    private final List<Trump> trumps;
+    private final List<Card> cards;
 
-    private Hand(List<Trump> trumps) {
-        this.trumps = trumps;
+    private Hand(List<Card> cards) {
+        this.cards = cards;
     }
 
     public static Hand create(Deck deck) {
@@ -25,21 +26,21 @@ public class Hand {
     /**
      * イカサマして手札を作る
      */
-    public static Hand cheating(List<Trump> trumps) {
-        return new Hand(trumps);
+    public static Hand cheating(List<Card> cards) {
+        return new Hand(cards);
     }
 
-    protected List<Trump> getTrumps() {
-        return trumps;
+    protected List<Card> getCards() {
+        return cards;
     }
 
     public boolean isContainsJoker() {
-        return trumps.contains(Joker.JOKER);
+        return cards.contains(Joker.JOKER);
     }
 
     public boolean hasGroupRank(int combCount, int groupCount) {
-        return trumps.stream()
-                .map(Trump::getRankValue)
+        return cards.stream()
+                .map(Card::getRankValue)
                 .collect(Collectors.groupingBy(v -> v))
                 .entrySet()
                 .stream()
@@ -48,13 +49,21 @@ public class Hand {
     }
 
     public boolean hasGroupSoot(int combCount, int groupCount) {
-        return trumps.stream()
-                .map(Trump::getSoot)
+        return cards.stream()
+                .map(Card::getSoot)
                 .collect(Collectors.groupingBy(v -> v))
                 .entrySet()
                 .stream()
                 .filter(v -> v.getValue().size() == combCount)
                 .count() == groupCount;
+    }
+
+    public List<Integer> getRankList() {
+        return cards.stream()
+                .filter(Card::isPlainTrump)
+                .map(Card::getRankValue)
+                .sorted(Comparator.naturalOrder())
+                .collect(Collectors.toList());
     }
 
 

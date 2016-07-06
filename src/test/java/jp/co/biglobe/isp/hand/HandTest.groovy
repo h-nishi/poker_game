@@ -1,6 +1,6 @@
 package jp.co.biglobe.isp.hand
 
-import jp.co.biglobe.isp.trump.Trump
+import jp.co.biglobe.isp.trump.Card
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -12,7 +12,7 @@ import static jp.co.biglobe.isp.hand.HandFixture.*
 @Unroll
 class HandTest extends Specification {
 
-    def "IsContainsJoker_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsContainsJoker_#useCase"(String useCase, List<Card> trumps, boolean expected) {
         setup:
         Hand hand = Hand.cheating(trumps);
 
@@ -26,7 +26,7 @@ class HandTest extends Specification {
 
     }
 
-    def "IsOnePare_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsOnePare_#useCase"(String useCase, List<Card> trumps, boolean expected) {
 
         setup:
         Hand hand = Hand.cheating(trumps);
@@ -52,7 +52,7 @@ class HandTest extends Specification {
 
     }
 
-    def "IsTwoPare_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsTwoPare_#useCase"(String useCase, List<Card> trumps, boolean expected) {
 
         setup:
         Hand hand = Hand.cheating(trumps);
@@ -78,7 +78,7 @@ class HandTest extends Specification {
 
     }
 
-    def "IsThreeCard_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsThreeCard_#useCase"(String useCase, List<Card> trumps, boolean expected) {
 
         setup:
         Hand hand = Hand.cheating(trumps);
@@ -104,7 +104,7 @@ class HandTest extends Specification {
 
     }
 
-    def "IsFourCard_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsFourCard_#useCase"(String useCase, List<Card> trumps, boolean expected) {
 
         setup:
         Hand hand = Hand.cheating(trumps);
@@ -130,7 +130,7 @@ class HandTest extends Specification {
 
     }
 
-    def "IsFiveCard_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsFiveCard_#useCase"(String useCase, List<Card> trumps, boolean expected) {
 
         setup:
         Hand hand = Hand.cheating(trumps);
@@ -156,7 +156,7 @@ class HandTest extends Specification {
 
     }
 
-    def "IsFlush_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsFlush_#useCase"(String useCase, List<Card> trumps, boolean expected) {
 
         setup:
         Hand hand = Hand.cheating(trumps);
@@ -182,7 +182,7 @@ class HandTest extends Specification {
 
     }
 
-    def "IsFullHouse_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsFullHouse_#useCase"(String useCase, List<Card> trumps, boolean expected) {
 
         setup:
         Hand hand = Hand.cheating(trumps);
@@ -209,7 +209,7 @@ class HandTest extends Specification {
 
     }
 
-    def "IsStraight_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsStraight_#useCase"(String useCase, List<Card> trumps, boolean expected) {
 
         setup:
         Hand hand = Hand.cheating(trumps);
@@ -233,7 +233,7 @@ class HandTest extends Specification {
         "ノーペア　　　　　　　　　　" | ノーペア()           | false
     }
 
-    def "IsRoyal_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsRoyal_#useCase"(String useCase, List<Card> trumps, boolean expected) {
 
         setup:
         Hand hand = Hand.cheating(trumps);
@@ -258,7 +258,7 @@ class HandTest extends Specification {
 
     }
 
-    def "IsStraightFlush_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsStraightFlush_#useCase"(String useCase, List<Card> trumps, boolean expected) {
 
         setup:
         Hand hand = Hand.cheating(trumps);
@@ -283,7 +283,7 @@ class HandTest extends Specification {
 
     }
 
-    def "IsRoyalStraightFlush_#useCase"(String useCase, List<Trump> trumps, boolean expected) {
+    def "IsRoyalStraightFlush_#useCase"(String useCase, List<Card> trumps, boolean expected) {
 
         setup:
         Hand hand = Hand.cheating(trumps);

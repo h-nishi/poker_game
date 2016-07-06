@@ -1,6 +1,6 @@
 package jp.co.biglobe.isp.Deck;
 
-import jp.co.biglobe.isp.trump.Trump;
+import jp.co.biglobe.isp.trump.Card;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -14,15 +14,15 @@ public class Deck {
 
     public static int TRUMP_TOTAL_NUMBER = 53;
 
-    private final LinkedList<Trump> trumps;
+    private final LinkedList<Card> cards;
 
     public Deck() {
-        this.trumps = createDeck();
+        this.cards = createDeck();
     }
 
-    private LinkedList<Trump> createDeck() {
+    private LinkedList<Card> createDeck() {
 
-        LinkedList<Trump> trumps = new LinkedList<>();
+        LinkedList<Card> cards = new LinkedList<>();
         MasterDeck masterDeck = new MasterDeck();
         Random rand = new Random();
 
@@ -34,32 +34,32 @@ public class Deck {
         for (int i = 0; i < TRUMP_TOTAL_NUMBER; ) {
             int index = rand.nextInt(TRUMP_TOTAL_NUMBER);
             if (!count[index]) {
-                trumps.push(masterDeck.getTrump(index));
+                cards.push(masterDeck.getTrump(index));
                 i++;
             }
         }
-        return trumps;
+        return cards;
     }
 
-    public List<Trump> drow(int number) {
-        List<Trump> list = new ArrayList<>();
+    public List<Card> drow(int number) {
+        List<Card> list = new ArrayList<>();
         for (int i = 0; i < number; i++) {
-            if(trumps.isEmpty()){
+            if(cards.isEmpty()){
                 throw new RuntimeException("もう、カードがないよ");
             }
-            list.add(trumps.pop());
+            list.add(cards.pop());
         }
         return list;
     }
 
-    public List<Trump> deal() {
+    public List<Card> deal() {
         
-        List<Trump> list = new ArrayList<>();
+        List<Card> list = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            if(trumps.isEmpty()){
+            if(cards.isEmpty()){
                 throw new RuntimeException("もう、カードがないよ");
             }
-            list.add(trumps.pop());
+            list.add(cards.pop());
         }
         return list;
     }
