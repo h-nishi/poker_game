@@ -1,4 +1,4 @@
-package jp.co.biglobe.isp.trump;
+package jp.co.biglobe.isp.card;
 
 import jp.co.biglobe.isp.poker.RankGeneral;
 import jp.co.biglobe.isp.poker.SootGeneral;
@@ -10,7 +10,7 @@ public enum Joker implements Card, RankGeneral, SootGeneral {
     JOKER;
 
     @Override
-    public SootGeneral getSoot() {
+    public SootGeneral getSuit() {
         return this;
     }
 
@@ -25,7 +25,7 @@ public enum Joker implements Card, RankGeneral, SootGeneral {
     }
 
     @Override
-    public boolean isPlainTrump() {
+    public boolean isPlainCard() {
         return false;
     }
 

@@ -18,7 +18,7 @@ class DeckTest extends Specification {
 
         expect:
         true
-//        sut.getTrump(4) == new PlainCard(Soot.スペード, Rank.A)
+//        sut.getCard(4) == new PlainCard(Suit.スペード, Rank.A)
 
     }
 

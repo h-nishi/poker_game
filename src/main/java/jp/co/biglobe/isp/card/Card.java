@@ -1,4 +1,4 @@
-package jp.co.biglobe.isp.trump;
+package jp.co.biglobe.isp.card;
 
 import jp.co.biglobe.isp.poker.SootGeneral;
 
@@ -6,9 +6,9 @@ import jp.co.biglobe.isp.poker.SootGeneral;
  * トランプ
  */
 public interface Card {
-    SootGeneral getSoot();
+    SootGeneral getSuit();
 
     int getRankValue();
     
-    boolean isPlainTrump();
+    boolean isPlainCard();
 }

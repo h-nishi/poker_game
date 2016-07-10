@@ -1,6 +1,6 @@
 package jp.co.biglobe.isp.hand
 
-import jp.co.biglobe.isp.trump.Card
+import jp.co.biglobe.isp.card.Card
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -12,30 +12,30 @@ import static jp.co.biglobe.isp.hand.HandFixture.*
 @Unroll
 class HandTest extends Specification {
 
-    def "IsContainsJoker_#useCase"(String useCase, List<Card> trumps, boolean expected) {
+    def "IsContainsJoker_#useCase"(String useCase, List<Card> cards, boolean expected) {
         setup:
-        Hand hand = Hand.cheating(trumps);
+        Hand hand = Hand.cheating(cards);
 
         expect:
         hand.isContainsJoker() == expected
 
         where:
-        useCase   | trumps       | expected
+        useCase   | cards       | expected
         "JOKERあり" | ワンペア_JOKER() | true
         "JOKERなし" | ファイブカード()    | false
 
     }
 
-    def "IsOnePare_#useCase"(String useCase, List<Card> trumps, boolean expected) {
+    def "IsOnePare_#useCase"(String useCase, List<Card> cards, boolean expected) {
 
         setup:
-        Hand hand = Hand.cheating(trumps);
+        Hand hand = Hand.cheating(cards);
 
         expect:
         Dealer.isOnePare(hand) == expected
 
         where:
-        useCase          | trumps           | expected
+        useCase          | cards           | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | true
         "ワンペア＿ジョーカーあり　　" | ワンペア_JOKER()     | true
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
@@ -52,16 +52,16 @@ class HandTest extends Specification {
 
     }
 
-    def "IsTwoPare_#useCase"(String useCase, List<Card> trumps, boolean expected) {
+    def "IsTwoPare_#useCase"(String useCase, List<Card> cards, boolean expected) {
 
         setup:
-        Hand hand = Hand.cheating(trumps);
+        Hand hand = Hand.cheating(cards);
 
         expect:
         Dealer.isTwoPare(hand) == expected
 
         where:
-        useCase          | trumps           | expected
+        useCase          | cards           | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | true
         "ツーペア　　　　　　　　　　" | ツーペア_JOKER()     | true
@@ -78,16 +78,16 @@ class HandTest extends Specification {
 
     }
 
-    def "IsThreeCard_#useCase"(String useCase, List<Card> trumps, boolean expected) {
+    def "IsThreeCard_#useCase"(String useCase, List<Card> cards, boolean expected) {
 
         setup:
-        Hand hand = Hand.cheating(trumps);
+        Hand hand = Hand.cheating(cards);
 
         expect:
         Dealer.isThreeCard(hand) == expected
 
         where:
-        useCase          | trumps           | expected
+        useCase          | cards           | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
         "スリーカード　　　　　　　　" | スリーカード()         | true
@@ -104,16 +104,16 @@ class HandTest extends Specification {
 
     }
 
-    def "IsFourCard_#useCase"(String useCase, List<Card> trumps, boolean expected) {
+    def "IsFourCard_#useCase"(String useCase, List<Card> cards, boolean expected) {
 
         setup:
-        Hand hand = Hand.cheating(trumps);
+        Hand hand = Hand.cheating(cards);
 
         expect:
         Dealer.isFourCard(hand) == expected
 
         where:
-        useCase          | trumps           | expected
+        useCase          | cards           | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
         "スリーカード　　　　　　　　" | スリーカード()         | false
@@ -130,16 +130,16 @@ class HandTest extends Specification {
 
     }
 
-    def "IsFiveCard_#useCase"(String useCase, List<Card> trumps, boolean expected) {
+    def "IsFiveCard_#useCase"(String useCase, List<Card> cards, boolean expected) {
 
         setup:
-        Hand hand = Hand.cheating(trumps);
+        Hand hand = Hand.cheating(cards);
 
         expect:
         Dealer.isFiveCard(hand) == expected
 
         where:
-        useCase          | trumps           | expected
+        useCase          | cards           | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
         "スリーカード　　　　　　　　" | スリーカード()         | false
@@ -156,16 +156,16 @@ class HandTest extends Specification {
 
     }
 
-    def "IsFlush_#useCase"(String useCase, List<Card> trumps, boolean expected) {
+    def "IsFlush_#useCase"(String useCase, List<Card> cards, boolean expected) {
 
         setup:
-        Hand hand = Hand.cheating(trumps);
+        Hand hand = Hand.cheating(cards);
 
         expect:
         Dealer.isFlush(hand) == expected
 
         where:
-        useCase            | trumps           | expected
+        useCase            | cards           | expected
         "ワンペア　　　　　　　　　　"   | ワンペア()           | false
         "ツーペア　　　　　　　　　　"   | ツーペア()           | false
         "スリーカード　　　　　　　　"   | スリーカード()         | false
@@ -182,16 +182,16 @@ class HandTest extends Specification {
 
     }
 
-    def "IsFullHouse_#useCase"(String useCase, List<Card> trumps, boolean expected) {
+    def "IsFullHouse_#useCase"(String useCase, List<Card> cards, boolean expected) {
 
         setup:
-        Hand hand = Hand.cheating(trumps);
+        Hand hand = Hand.cheating(cards);
 
         expect:
         Dealer.isFullHouse(hand) == expected
 
         where:
-        useCase            | trumps            | expected
+        useCase            | cards            | expected
         "ワンペア　　　　　　　　　　"   | ワンペア()            | false
         "ツーペア　　　　　　　　　　"   | ツーペア()            | false
         "スリーカード　　　　　　　　"   | スリーカード()          | false
@@ -209,16 +209,16 @@ class HandTest extends Specification {
 
     }
 
-    def "IsStraight_#useCase"(String useCase, List<Card> trumps, boolean expected) {
+    def "IsStraight_#useCase"(String useCase, List<Card> cards, boolean expected) {
 
         setup:
-        Hand hand = Hand.cheating(trumps);
+        Hand hand = Hand.cheating(cards);
 
         expect:
         Dealer.isStraight(hand) == expected
 
         where:
-        useCase          | trumps           | expected
+        useCase          | cards           | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
         "スリーカード　　　　　　　　" | スリーカード()         | false
@@ -233,16 +233,16 @@ class HandTest extends Specification {
         "ノーペア　　　　　　　　　　" | ノーペア()           | false
     }
 
-    def "IsRoyal_#useCase"(String useCase, List<Card> trumps, boolean expected) {
+    def "IsRoyal_#useCase"(String useCase, List<Card> cards, boolean expected) {
 
         setup:
-        Hand hand = Hand.cheating(trumps);
+        Hand hand = Hand.cheating(cards);
 
         expect:
         Dealer.isRoyal(hand) == expected
 
         where:
-        useCase          | trumps           | expected
+        useCase          | cards           | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
         "スリーカード　　　　　　　　" | スリーカード()         | false
@@ -258,16 +258,16 @@ class HandTest extends Specification {
 
     }
 
-    def "IsStraightFlush_#useCase"(String useCase, List<Card> trumps, boolean expected) {
+    def "IsStraightFlush_#useCase"(String useCase, List<Card> cards, boolean expected) {
 
         setup:
-        Hand hand = Hand.cheating(trumps);
+        Hand hand = Hand.cheating(cards);
 
         expect:
         Dealer.isStraightFlush(hand) == expected
 
         where:
-        useCase          | trumps           | expected
+        useCase          | cards           | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
         "スリーカード　　　　　　　　" | スリーカード()         | false
@@ -283,16 +283,16 @@ class HandTest extends Specification {
 
     }
 
-    def "IsRoyalStraightFlush_#useCase"(String useCase, List<Card> trumps, boolean expected) {
+    def "IsRoyalStraightFlush_#useCase"(String useCase, List<Card> cards, boolean expected) {
 
         setup:
-        Hand hand = Hand.cheating(trumps);
+        Hand hand = Hand.cheating(cards);
 
         expect:
         Dealer.isRoyalStraightFlush(hand) == expected
 
         where:
-        useCase          | trumps           | expected
+        useCase          | cards           | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
         "スリーカード　　　　　　　　" | スリーカード()         | false

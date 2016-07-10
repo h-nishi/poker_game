@@ -1,25 +1,25 @@
-package jp.co.biglobe.isp.trump;
+package jp.co.biglobe.isp.card;
 
 import jp.co.biglobe.isp.poker.Rank;
-import jp.co.biglobe.isp.poker.Soot;
+import jp.co.biglobe.isp.poker.Suit;
 
 /**
  * トランプ
  */
 public class PlainCard implements Card {
 
-    private final Soot soot;
+    private final Suit suit;
 
     private final Rank rank;
 
-    public PlainCard(Soot soot, Rank rank) {
-        this.soot = soot;
+    public PlainCard(Suit suit, Rank rank) {
+        this.suit = suit;
         this.rank = rank;
     }
 
     @Override
-    public Soot getSoot() {
-        return soot;
+    public Suit getSuit() {
+        return suit;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class PlainCard implements Card {
     }
 
     @Override
-    public boolean isPlainTrump() {
+    public boolean isPlainCard() {
         return true;
     }
 }

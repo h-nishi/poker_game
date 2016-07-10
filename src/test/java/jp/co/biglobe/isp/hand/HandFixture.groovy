@@ -1,13 +1,13 @@
 package jp.co.biglobe.isp.hand
 
 import jp.co.biglobe.isp.poker.Rank
-import jp.co.biglobe.isp.poker.Soot
-import jp.co.biglobe.isp.trump.Joker
-import jp.co.biglobe.isp.trump.PlainCard
-import jp.co.biglobe.isp.trump.Card
+import jp.co.biglobe.isp.poker.Suit
+import jp.co.biglobe.isp.card.Joker
+import jp.co.biglobe.isp.card.PlainCard
+import jp.co.biglobe.isp.card.Card
 
 import static jp.co.biglobe.isp.poker.Rank.*
-import static jp.co.biglobe.isp.poker.Soot.*
+import static Suit.*
 
 /**
  * 手札のテストデータ
@@ -15,111 +15,111 @@ import static jp.co.biglobe.isp.poker.Soot.*
 class HandFixture {
 
     public static List<Card> ワンペア() {
-        return deal(trump(クローバー, A), trump(ハート, A), trump(クローバー, _2), trump(クローバー, _3), trump(クローバー, _4))
+        return deal(card(クローバー, A), card(ハート, A), card(クローバー, _2), card(クローバー, _3), card(クローバー, _4))
     }
 
     public static List<Card> ワンペア_JOKER() {
-        return deal(trump(クローバー, A), Joker.JOKER, trump(クローバー, _2), trump(クローバー, _3), trump(クローバー, _4))
+        return deal(card(クローバー, A), Joker.JOKER, card(クローバー, _2), card(クローバー, _3), card(クローバー, _4))
     }
 
     public static List<Card> ツーペア() {
-        return deal(trump(クローバー, A), trump(ハート, A), trump(クローバー, _2), trump(クローバー, _2), trump(クローバー, _4))
+        return deal(card(クローバー, A), card(ハート, A), card(クローバー, _2), card(クローバー, _2), card(クローバー, _4))
     }
 
     public static List<Card> ツーペア_JOKER() {
-        return deal(trump(クローバー, A), trump(ハート, A), Joker.JOKER, trump(クローバー, _2), trump(クローバー, _4))
+        return deal(card(クローバー, A), card(ハート, A), Joker.JOKER, card(クローバー, _2), card(クローバー, _4))
     }
 
     public static List<Card> スリーカード() {
-        return deal(trump(クローバー, A), trump(ハート, A), trump(ダイヤ, A), trump(クローバー, _2), trump(クローバー, _4))
+        return deal(card(クローバー, A), card(ハート, A), card(ダイヤ, A), card(クローバー, _2), card(クローバー, _4))
     }
 
     public static List<Card> スリーカード_JOKER() {
-        return deal(trump(クローバー, A), trump(ハート, A), Joker.JOKER, trump(クローバー, _2), trump(クローバー, _4))
+        return deal(card(クローバー, A), card(ハート, A), Joker.JOKER, card(クローバー, _2), card(クローバー, _4))
     }
 
     public static List<Card> フォーカード() {
-        return deal(trump(クローバー, A), trump(ハート, A), trump(ダイヤ, A), trump(クローバー, A), trump(クローバー, _4))
+        return deal(card(クローバー, A), card(ハート, A), card(ダイヤ, A), card(クローバー, A), card(クローバー, _4))
     }
 
     public static List<Card> フォーカード_JOKER() {
-        return deal(trump(クローバー, A), trump(ハート, A), trump(ダイヤ, A), Joker.JOKER, trump(クローバー, _4))
+        return deal(card(クローバー, A), card(ハート, A), card(ダイヤ, A), Joker.JOKER, card(クローバー, _4))
     }
 
     public static List<Card> ファイブカード() {
-        return deal(trump(クローバー, A), trump(ハート, A), trump(ダイヤ, A), trump(クローバー, A), trump(クローバー, A))
+        return deal(card(クローバー, A), card(ハート, A), card(ダイヤ, A), card(クローバー, A), card(クローバー, A))
     }
 
     public static List<Card> ファイブカード_JOKER() {
-        return deal(trump(クローバー, A), trump(ハート, A), trump(ダイヤ, A), Joker.JOKER, trump(スペード, A))
+        return deal(card(クローバー, A), card(ハート, A), card(ダイヤ, A), Joker.JOKER, card(スペード, A))
     }
 
     public static List<Card> フラッシュ() {
-        return deal(trump(クローバー, A), trump(クローバー, _2), trump(クローバー, _4), trump(クローバー, _5), trump(クローバー, _6))
+        return deal(card(クローバー, A), card(クローバー, _2), card(クローバー, _4), card(クローバー, _5), card(クローバー, _6))
     }
 
     public static List<Card> フラッシュ_JOKER() {
-        return deal(trump(クローバー, A), trump(クローバー, _2), trump(クローバー, _4), trump(クローバー, _5), Joker.JOKER)
+        return deal(card(クローバー, A), card(クローバー, _2), card(クローバー, _4), card(クローバー, _5), Joker.JOKER)
     }
 
     public static List<Card> フルハウス() {
-        return deal(trump(クローバー, A), trump(ハート, A), trump(クローバー, A), trump(ハート, _5), trump(クローバー, _5))
+        return deal(card(クローバー, A), card(ハート, A), card(クローバー, A), card(ハート, _5), card(クローバー, _5))
     }
 
     public static List<Card> フルハウス_3_1_JOKER() {
-        return deal(trump(クローバー, A), trump(ハート, A), trump(クローバー, A), trump(ハート, _5), Joker.JOKER)
+        return deal(card(クローバー, A), card(ハート, A), card(クローバー, A), card(ハート, _5), Joker.JOKER)
     }
 
     public static List<Card> フルハウス_2_2_JOKER() {
-        return deal(trump(クローバー, A), trump(ハート, A), Joker.JOKER, trump(ハート, _5), trump(クローバー, _5))
+        return deal(card(クローバー, A), card(ハート, A), Joker.JOKER, card(ハート, _5), card(クローバー, _5))
     }
 
 
     public static List<Card> ストレート() {
-        return deal(trump(クローバー, A), trump(ハート, _2), trump(クローバー, _3), trump(ハート, _4), trump(クローバー, _5))
+        return deal(card(クローバー, A), card(ハート, _2), card(クローバー, _3), card(ハート, _4), card(クローバー, _5))
     }
 
     public static List<Card> ロイヤル() {
-        return deal(trump(クローバー, A), trump(ハート, _10), trump(クローバー, _13), trump(ハート, _11), trump(クローバー, _12))
+        return deal(card(クローバー, A), card(ハート, _10), card(クローバー, _13), card(ハート, _11), card(クローバー, _12))
     }
 
     public static List<Card> ストレートフラッシュ() {
-        return deal(trump(クローバー, A), trump(クローバー, _2), trump(クローバー, _3), trump(クローバー, _5), trump(クローバー, _4))
+        return deal(card(クローバー, A), card(クローバー, _2), card(クローバー, _3), card(クローバー, _5), card(クローバー, _4))
     }
 
     public static List<Card> ロイヤルストレートフラッシュ() {
-        return deal(trump(クローバー, A), trump(クローバー, _10), trump(クローバー, _13), trump(クローバー, _11), trump(クローバー, _12))
+        return deal(card(クローバー, A), card(クローバー, _10), card(クローバー, _13), card(クローバー, _11), card(クローバー, _12))
     }
 
     public static List<Card> ノーペア() {
-        return deal(trump(クローバー, A), trump(ハート, _6), trump(クローバー, _2), trump(クローバー, _3), trump(クローバー, _4))
+        return deal(card(クローバー, A), card(ハート, _6), card(クローバー, _2), card(クローバー, _3), card(クローバー, _4))
     }
 
     /************************************************************************************
      *  以降の記述は補助用のメソッドを用意しているだけなので、気にしないで下さい。
      ************************************************************************************/
-    public static PlainCard trump(
-            Soot soot,
+    public static PlainCard card(
+            Suit soot,
             Rank rank
     ) {
         return new PlainCard(soot, rank);
     }
 
     public static List<Card> deal(
-            Card trump1,
-            Card trump2,
-            Card trump3,
-            Card trump4,
-            Card trump5
+            Card card1,
+            Card card2,
+            Card card3,
+            Card card4,
+            Card card5
     ) {
-        List<Card> trumps = new ArrayList<>()
-        trumps.add(trump1)
-        trumps.add(trump2)
-        trumps.add(trump3)
-        trumps.add(trump4)
-        trumps.add(trump5)
+        List<Card> cards = new ArrayList<>()
+        cards.add(card1)
+        cards.add(card2)
+        cards.add(card3)
+        cards.add(card4)
+        cards.add(card5)
 
-        return trumps
+        return cards
     }
 
 

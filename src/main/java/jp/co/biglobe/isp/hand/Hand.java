@@ -1,8 +1,8 @@
 package jp.co.biglobe.isp.hand;
 
 import jp.co.biglobe.isp.Deck.Deck;
-import jp.co.biglobe.isp.trump.Card;
-import jp.co.biglobe.isp.trump.Joker;
+import jp.co.biglobe.isp.card.Card;
+import jp.co.biglobe.isp.card.Joker;
 
 import java.util.Comparator;
 import java.util.List;
@@ -50,7 +50,7 @@ public class Hand {
 
     public boolean hasGroupSoot(int combCount, int groupCount) {
         return cards.stream()
-                .map(Card::getSoot)
+                .map(Card::getSuit)
                 .collect(Collectors.groupingBy(v -> v))
                 .entrySet()
                 .stream()
@@ -60,7 +60,7 @@ public class Hand {
 
     public List<Integer> getRankList() {
         return cards.stream()
-                .filter(Card::isPlainTrump)
+                .filter(Card::isPlainCard)
                 .map(Card::getRankValue)
                 .sorted(Comparator.naturalOrder())
                 .collect(Collectors.toList());
