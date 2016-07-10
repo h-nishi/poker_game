@@ -1,4 +1,4 @@
-package jp.co.biglobe.isp.Deck
+package jp.co.biglobe.isp.deck
 
 import jp.co.biglobe.isp.hand.Hand
 import spock.lang.Specification

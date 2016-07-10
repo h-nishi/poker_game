@@ -1,6 +1,6 @@
 package jp.co.biglobe.isp.hand;
 
-import jp.co.biglobe.isp.Deck.Deck;
+import jp.co.biglobe.isp.deck.Deck;
 import jp.co.biglobe.isp.card.Card;
 import jp.co.biglobe.isp.card.Joker;
 
