@@ -101,10 +101,8 @@ public class Dealer {
         return isThreeCard(hand) && isOnePare(hand);
     }
 
-    // todo : ジョーカーの場合の判定が入っていない
     private static boolean isStraight(Hand hand) {
         List<Integer> list = hand.getRankList();
-
         if (hand.isContainsJoker()) {
             return isStraightJokerList(list);
         }
@@ -112,7 +110,11 @@ public class Dealer {
     }
 
     private static boolean isRoyal(Hand hand) {
-        return isRoyalList(hand.getRankList());
+        List<Integer> list = hand.getRankList();
+        if (hand.isContainsJoker()) {
+            return isRoyalJokerList(list);
+        }
+        return isRoyalList(list);
     }
 
     private static boolean isStraightFlush(Hand hand) {
@@ -142,7 +144,7 @@ public class Dealer {
     private static boolean isStraightJokerList(List<Integer> list) {
 
         int e = -1;
-        int unmatch_count = 0;
+        int unmatched_count = 0;
         for (Integer i : list) {
             if (e == -1) {
                 e = i;
@@ -150,28 +152,54 @@ public class Dealer {
             if (e == i) {
                 e++;
                 continue;
-            } else {
-                e++;
-                unmatch_count++;
-                if (unmatch_count > 1) {
-                    return false;
-                }
-                if (e == i) {
-                    e++;
-                    continue;
-                }
             }
+
+            e++;
+            unmatched_count++;
+            if (unmatched_count > 1) {
+                return false;
+            }
+            if (e == i) {
+                e++;
+                continue;
+            }
+
             return false;
         }
         return true;
     }
-
 
     private static boolean isRoyalList(List<Integer> list) {
 
         int royal[] = {1, 10, 11, 12, 13};
         for (int cnt = 0; cnt < 5; cnt++) {
             if (royal[cnt] == list.get(cnt)) {
+                continue;
+            }
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isRoyalJokerList(List<Integer> list) {
+
+        int unmatched_count = 0;
+        int royal[] = {1, 10, 11, 12, 13};
+        int royal_cnt = 0;
+
+        for (Integer i : list) {
+            if (royal[royal_cnt] == i) {
+                royal_cnt++;
+                continue;
+            }
+
+            royal_cnt++;
+            unmatched_count++;
+            if (unmatched_count > 1) {
+                return false;
+            }
+            if (royal[royal_cnt] == i) {
+                royal_cnt++;
                 continue;
             }
             return false;

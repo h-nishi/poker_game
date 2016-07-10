@@ -103,6 +103,27 @@ class HandFixture {
         return deal(card(クローバー, A), card(ハート, _10), card(クローバー, _13), card(ハート, _11), card(クローバー, _12))
     }
 
+    public static List<Card> ロイヤル_JOKER_1() {
+        return deal(Joker.JOKER, card(ハート, _10), card(クローバー, _13), card(ハート, _11), card(クローバー, _12))
+    }
+
+    public static List<Card> ロイヤル_JOKER_2() {
+        return deal(card(クローバー, A), Joker.JOKER, card(クローバー, _13), card(ハート, _11), card(クローバー, _12))
+    }
+
+    public static List<Card> ロイヤル_JOKER_3() {
+        return deal(card(クローバー, A), card(ハート, _10), Joker.JOKER, card(ハート, _11), card(クローバー, _12))
+    }
+
+    public static List<Card> ロイヤル_JOKER_4() {
+        return deal(card(クローバー, A), card(ハート, _10), card(クローバー, _13), Joker.JOKER, card(クローバー, _12))
+    }
+
+    public static List<Card> ロイヤル_JOKER_5() {
+        return deal(card(クローバー, A), card(ハート, _10), card(クローバー, _13), card(ハート, _11), Joker.JOKER,)
+    }
+
+
     public static List<Card> ストレートフラッシュ() {
         return deal(card(クローバー, A), card(クローバー, _2), card(クローバー, _3), card(クローバー, _5), card(クローバー, _4))
     }
@@ -129,6 +150,26 @@ class HandFixture {
 
     public static List<Card> ロイヤルストレートフラッシュ() {
         return deal(card(クローバー, A), card(クローバー, _10), card(クローバー, _13), card(クローバー, _11), card(クローバー, _12))
+    }
+
+    public static List<Card> ロイヤルストレートフラッシュ_JOKER_1() {
+        return deal(Joker.JOKER, card(クローバー, _10), card(クローバー, _13), card(クローバー, _11), card(クローバー, _12))
+    }
+
+    public static List<Card> ロイヤルストレートフラッシュ_JOKER_2() {
+        return deal(card(クローバー, A), Joker.JOKER, card(クローバー, _13), card(クローバー, _11), card(クローバー, _12))
+    }
+
+    public static List<Card> ロイヤルストレートフラッシュ_JOKER_3() {
+        return deal(card(クローバー, A), card(クローバー, _10), Joker.JOKER, card(クローバー, _11), card(クローバー, _12))
+    }
+
+    public static List<Card> ロイヤルストレートフラッシュ_JOKER_4() {
+        return deal(card(クローバー, A), card(クローバー, _10), card(クローバー, _13), Joker.JOKER, card(クローバー, _12))
+    }
+
+    public static List<Card> ロイヤルストレートフラッシュ_JOKER_5() {
+        return deal(card(クローバー, A), card(クローバー, _10), card(クローバー, _13), card(クローバー, _11), Joker.JOKER)
     }
 
     public static List<Card> ノーペア() {
