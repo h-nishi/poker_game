@@ -1,13 +1,13 @@
 package jp.co.biglobe.isp.hand
 
-import jp.co.biglobe.isp.poker.Rank
-import jp.co.biglobe.isp.poker.Suit
+import jp.co.biglobe.isp.card.Card
 import jp.co.biglobe.isp.card.Joker
 import jp.co.biglobe.isp.card.PlainCard
-import jp.co.biglobe.isp.card.Card
+import jp.co.biglobe.isp.poker.Rank
+import jp.co.biglobe.isp.poker.Suit
 
 import static jp.co.biglobe.isp.poker.Rank.*
-import static Suit.*
+import static jp.co.biglobe.isp.poker.Suit.*
 
 /**
  * 手札のテストデータ
@@ -47,7 +47,7 @@ class HandFixture {
     }
 
     public static List<Card> ファイブカード() {
-        return deal(card(クローバー, A), card(ハート, A), card(ダイヤ, A), card(クローバー, A), card(クローバー, A))
+        return deal(card(クローバー, A), card(ハート, A), card(ダイヤ, A), card(クローバー, A), Joker.JOKER)
     }
 
     public static List<Card> ファイブカード_JOKER() {
@@ -79,12 +79,52 @@ class HandFixture {
         return deal(card(クローバー, A), card(ハート, _2), card(クローバー, _3), card(ハート, _4), card(クローバー, _5))
     }
 
+    public static List<Card> ストレート_1_JOKER() {
+        return deal(Joker.JOKER, card(ハート, _2), card(クローバー, _3), card(ハート, _4), card(クローバー, _5))
+    }
+
+    public static List<Card> ストレート_2_JOKER() {
+        return deal(card(クローバー, A), Joker.JOKER, card(クローバー, _3), card(ハート, _4), card(クローバー, _5))
+    }
+
+    public static List<Card> ストレート_3_JOKER() {
+        return deal(card(クローバー, A), card(ハート, _2), Joker.JOKER, card(ハート, _4), card(クローバー, _5))
+    }
+
+    public static List<Card> ストレート_4_JOKER() {
+        return deal(card(クローバー, A), card(ハート, _2), card(クローバー, _3), Joker.JOKER, card(クローバー, _5))
+    }
+
+    public static List<Card> ストレート_5_JOKER() {
+        return deal(card(クローバー, A), card(ハート, _2), card(クローバー, _4), card(ハート, _3), Joker.JOKER)
+    }
+
     public static List<Card> ロイヤル() {
         return deal(card(クローバー, A), card(ハート, _10), card(クローバー, _13), card(ハート, _11), card(クローバー, _12))
     }
 
     public static List<Card> ストレートフラッシュ() {
         return deal(card(クローバー, A), card(クローバー, _2), card(クローバー, _3), card(クローバー, _5), card(クローバー, _4))
+    }
+
+    public static List<Card> ストレートフラッシュ_JOKER_1() {
+        return deal(Joker.JOKER, card(クローバー, _2), card(クローバー, _3), card(クローバー, _5), card(クローバー, _4))
+    }
+
+    public static List<Card> ストレートフラッシュ_JOKER_2() {
+        return deal(card(クローバー, A), Joker.JOKER, card(クローバー, _3), card(クローバー, _5), card(クローバー, _4))
+    }
+
+    public static List<Card> ストレートフラッシュ_JOKER_3() {
+        return deal(card(クローバー, A), card(クローバー, _2), Joker.JOKER, card(クローバー, _5), card(クローバー, _4))
+    }
+
+    public static List<Card> ストレートフラッシュ_JOKER_4() {
+        return deal(card(クローバー, A), card(クローバー, _2), card(クローバー, _3), Joker.JOKER, card(クローバー, _4))
+    }
+
+    public static List<Card> ストレートフラッシュ_JOKER_5() {
+        return deal(card(クローバー, A), card(クローバー, _2), card(クローバー, _3), card(クローバー, _5), Joker.JOKER)
     }
 
     public static List<Card> ロイヤルストレートフラッシュ() {

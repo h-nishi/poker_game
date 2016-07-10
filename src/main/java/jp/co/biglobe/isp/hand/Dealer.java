@@ -104,6 +104,10 @@ public class Dealer {
     // todo : ジョーカーの場合の判定が入っていない
     private static boolean isStraight(Hand hand) {
         List<Integer> list = hand.getRankList();
+
+        if (hand.isContainsJoker()) {
+            return isStraightJokerList(list);
+        }
         return isStraightList(list) || isRoyalList(list);
     }
 
@@ -134,6 +138,34 @@ public class Dealer {
         }
         return true;
     }
+
+    private static boolean isStraightJokerList(List<Integer> list) {
+
+        int e = -1;
+        int unmatch_count = 0;
+        for (Integer i : list) {
+            if (e == -1) {
+                e = i;
+            }
+            if (e == i) {
+                e++;
+                continue;
+            } else {
+                e++;
+                unmatch_count++;
+                if (unmatch_count > 1) {
+                    return false;
+                }
+                if (e == i) {
+                    e++;
+                    continue;
+                }
+            }
+            return false;
+        }
+        return true;
+    }
+
 
     private static boolean isRoyalList(List<Integer> list) {
 

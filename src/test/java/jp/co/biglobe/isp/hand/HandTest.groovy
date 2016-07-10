@@ -20,9 +20,9 @@ class HandTest extends Specification {
         hand.isContainsJoker() == expected
 
         where:
-        useCase   | cards       | expected
+        useCase   | cards        | expected
         "JOKERあり" | ワンペア_JOKER() | true
-        "JOKERなし" | ファイブカード()    | false
+        "JOKERなし" | ワンペア()       | false
 
     }
 
@@ -35,7 +35,7 @@ class HandTest extends Specification {
         Dealer.isOnePare(hand) == expected
 
         where:
-        useCase          | cards           | expected
+        useCase          | cards            | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | true
         "ワンペア＿ジョーカーあり　　" | ワンペア_JOKER()     | true
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
@@ -61,7 +61,7 @@ class HandTest extends Specification {
         Dealer.isTwoPare(hand) == expected
 
         where:
-        useCase          | cards           | expected
+        useCase          | cards            | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | true
         "ツーペア　　　　　　　　　　" | ツーペア_JOKER()     | true
@@ -87,7 +87,7 @@ class HandTest extends Specification {
         Dealer.isThreeCard(hand) == expected
 
         where:
-        useCase          | cards           | expected
+        useCase          | cards            | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
         "スリーカード　　　　　　　　" | スリーカード()         | true
@@ -113,7 +113,7 @@ class HandTest extends Specification {
         Dealer.isFourCard(hand) == expected
 
         where:
-        useCase          | cards           | expected
+        useCase          | cards            | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
         "スリーカード　　　　　　　　" | スリーカード()         | false
@@ -139,12 +139,11 @@ class HandTest extends Specification {
         Dealer.isFiveCard(hand) == expected
 
         where:
-        useCase          | cards           | expected
+        useCase          | cards            | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
         "スリーカード　　　　　　　　" | スリーカード()         | false
         "フォーカード　　　　　　　　" | フォーカード()         | false
-        "ファイブカード　　　　　　　" | ファイブカード()        | false
         "ファイブカード　　　　　　　" | ファイブカード_JOKER()  | true
         "フラッシュ　　　　　　　　　" | フラッシュ()          | false
         "フルハウス　　　　　　　　　" | フルハウス()          | false
@@ -165,7 +164,7 @@ class HandTest extends Specification {
         Dealer.isFlush(hand) == expected
 
         where:
-        useCase            | cards           | expected
+        useCase            | cards            | expected
         "ワンペア　　　　　　　　　　"   | ワンペア()           | false
         "ツーペア　　　　　　　　　　"   | ツーペア()           | false
         "スリーカード　　　　　　　　"   | スリーカード()         | false
@@ -191,7 +190,7 @@ class HandTest extends Specification {
         Dealer.isFullHouse(hand) == expected
 
         where:
-        useCase            | cards            | expected
+        useCase            | cards             | expected
         "ワンペア　　　　　　　　　　"   | ワンペア()            | false
         "ツーペア　　　　　　　　　　"   | ツーペア()            | false
         "スリーカード　　　　　　　　"   | スリーカード()          | false
@@ -218,19 +217,24 @@ class HandTest extends Specification {
         Dealer.isStraight(hand) == expected
 
         where:
-        useCase          | cards           | expected
-        "ワンペア　　　　　　　　　　" | ワンペア()           | false
-        "ツーペア　　　　　　　　　　" | ツーペア()           | false
-        "スリーカード　　　　　　　　" | スリーカード()         | false
-        "フォーカード　　　　　　　　" | フォーカード()         | false
-        "ファイブカード　　　　　　　" | ファイブカード()        | false
-        "フラッシュ　　　　　　　　　" | フラッシュ()          | false
-        "フルハウス　　　　　　　　　" | フルハウス()          | false
-        "ストレート　　　　　　　　　" | ストレート()          | true
-        "ロイヤル　　　　　　　　　　" | ロイヤル()           | true
-        "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | true
-        "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | true
-        "ノーペア　　　　　　　　　　" | ノーペア()           | false
+        useCase             | cards            | expected
+        "ワンペア　　　　　　　　　　"    | ワンペア()           | false
+        "ツーペア　　　　　　　　　　"    | ツーペア()           | false
+        "スリーカード　　　　　　　　"    | スリーカード()         | false
+        "フォーカード　　　　　　　　"    | フォーカード()         | false
+        "ファイブカード　　　　　　　"    | ファイブカード()        | false
+        "フラッシュ　　　　　　　　　"    | フラッシュ()          | false
+        "フルハウス　　　　　　　　　"    | フルハウス()          | false
+        "ストレート　　　　　　　　　"    | ストレート()          | true
+        "ストレート_1_JOKER　　　　" | ストレート_1_JOKER()  | true
+        "ストレート_2_JOKER　　　　" | ストレート_2_JOKER()  | true
+        "ストレート_3_JOKER　　　　" | ストレート_3_JOKER()  | true
+        "ストレート_4_JOKER　　　　" | ストレート_4_JOKER()  | true
+        "ストレート_5_JOKER　　　　" | ストレート_5_JOKER()  | true
+        "ロイヤル　　　　　　　　　　"    | ロイヤル()           | true
+        "ストレートフラッシ　　　　　"    | ストレートフラッシュ()     | true
+        "ロイヤルストレートフラッシュ"    | ロイヤルストレートフラッシュ() | true
+        "ノーペア　　　　　　　　　　"    | ノーペア()           | false
     }
 
     def "IsRoyal_#useCase"(String useCase, List<Card> cards, boolean expected) {
@@ -242,7 +246,7 @@ class HandTest extends Specification {
         Dealer.isRoyal(hand) == expected
 
         where:
-        useCase          | cards           | expected
+        useCase          | cards            | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
         "スリーカード　　　　　　　　" | スリーカード()         | false
@@ -267,19 +271,24 @@ class HandTest extends Specification {
         Dealer.isStraightFlush(hand) == expected
 
         where:
-        useCase          | cards           | expected
-        "ワンペア　　　　　　　　　　" | ワンペア()           | false
-        "ツーペア　　　　　　　　　　" | ツーペア()           | false
-        "スリーカード　　　　　　　　" | スリーカード()         | false
-        "フォーカード　　　　　　　　" | フォーカード()         | false
-        "ファイブカード　　　　　　　" | ファイブカード()        | false
-        "フラッシュ　　　　　　　　　" | フラッシュ()          | false
-        "フルハウス　　　　　　　　　" | フルハウス()          | false
-        "ストレート　　　　　　　　　" | ストレート()          | false
-        "ロイヤル　　　　　　　　　　" | ロイヤル()           | false
-        "ストレートフラッシ　　　　　" | ストレートフラッシュ()     | true
-        "ロイヤルストレートフラッシュ" | ロイヤルストレートフラッシュ() | true
-        "ノーペア　　　　　　　　　　" | ノーペア()           | false
+        useCase           | cards                | expected
+        "ワンペア　　　　　　　　　　"  | ワンペア()               | false
+        "ツーペア　　　　　　　　　　"  | ツーペア()               | false
+        "スリーカード　　　　　　　　"  | スリーカード()             | false
+        "フォーカード　　　　　　　　"  | フォーカード()             | false
+        "ファイブカード　　　　　　　"  | ファイブカード()            | false
+        "フラッシュ　　　　　　　　　"  | フラッシュ()              | false
+        "フルハウス　　　　　　　　　"  | フルハウス()              | false
+        "ストレート　　　　　　　　　"  | ストレート()              | false
+        "ロイヤル　　　　　　　　　　"  | ロイヤル()               | false
+        "ストレートフラッシ　　　　　"  | ストレートフラッシュ()         | true
+        "ストレートフラッシ_1　　　　" | ストレートフラッシュ_JOKER_1() | true
+        "ストレートフラッシ_2　　　　" | ストレートフラッシュ_JOKER_2() | true
+        "ストレートフラッシ_3　　　　" | ストレートフラッシュ_JOKER_3() | true
+        "ストレートフラッシ_4　　　　" | ストレートフラッシュ_JOKER_4() | true
+        "ストレートフラッシ_5　　　　" | ストレートフラッシュ_JOKER_5() | true
+        "ロイヤルストレートフラッシュ"  | ロイヤルストレートフラッシュ()     | true
+        "ノーペア　　　　　　　　　　"  | ノーペア()               | false
 
     }
 
@@ -292,7 +301,7 @@ class HandTest extends Specification {
         Dealer.isRoyalStraightFlush(hand) == expected
 
         where:
-        useCase          | cards           | expected
+        useCase          | cards            | expected
         "ワンペア　　　　　　　　　　" | ワンペア()           | false
         "ツーペア　　　　　　　　　　" | ツーペア()           | false
         "スリーカード　　　　　　　　" | スリーカード()         | false
