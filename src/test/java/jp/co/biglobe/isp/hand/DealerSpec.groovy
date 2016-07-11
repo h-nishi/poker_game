@@ -8,7 +8,7 @@ import static jp.co.biglobe.isp.hand.HandFixture.*
 /**
  * ディラー
  */
-class DealerTest extends Specification {
+class DealerSpec extends Specification {
     
 
     def "JudgeHand_#useCase"(String useCase, List<Card> cards, WinningHand expected) {

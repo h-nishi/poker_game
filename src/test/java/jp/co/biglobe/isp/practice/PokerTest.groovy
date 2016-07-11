@@ -24,7 +24,7 @@ class PokerTest {
      * 　cards  : 評価データ(テストしたい条件を満たすデータの組み合わせ)
      * 　useCase : 期待値(期待するテストの結果)
      */
-    def "JudgeHand2_#useCase"(String useCase, List<Card> cards, WinningHand expected) {
+    def "Poker_#useCase"(String useCase, List<Card> cards, WinningHand expected) {
 
         setup:
         Hand hand = Hand.cheating(cards)
