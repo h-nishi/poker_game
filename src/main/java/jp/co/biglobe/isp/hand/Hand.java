@@ -16,6 +16,11 @@ public class Hand {
     private final List<Card> cards;
 
     private Hand(List<Card> cards) {
+        
+        if( cards.stream().filter(Card::isPlainCard).count() < 4 ){
+            throw new RuntimeException("JOKERが2枚以上指定されています");
+        }
+        
         this.cards = cards;
     }
 

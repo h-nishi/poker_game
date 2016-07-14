@@ -5,17 +5,18 @@ import jp.co.biglobe.isp.card.Joker
 import jp.co.biglobe.isp.hand.Dealer
 import jp.co.biglobe.isp.hand.Hand
 import jp.co.biglobe.isp.hand.WinningHand
+import spock.lang.Specification
 
 import static jp.co.biglobe.isp.hand.HandFixture.card
 import static jp.co.biglobe.isp.hand.HandFixture.deal
 import static jp.co.biglobe.isp.poker.Rank.*
 import static jp.co.biglobe.isp.poker.Suit.クローバー
-import static jp.co.biglobe.isp.poker.Suit.ハート
+import static jp.co.biglobe.isp.poker.Suit.ダイヤ
 
 /**
  * ポーカーのテスト
  */
-class PokerTest {
+class PokerTest extends Specification {
 
     /**
      *
@@ -33,8 +34,8 @@ class PokerTest {
         Dealer.judgeHand(hand) == expected
 
         where:
-        useCase | cards                                                                              | expected
-        "ワンペア"  | deal(Joker.JOKER, card(ハート, A), card(クローバー, _2), card(クローバー, _3), card(クローバー, _4)) | WinningHand.ワンペア
+        useCase | cards                                                                                 | expected
+        "ワンペア"  | deal(Joker.JOKER, card(ダイヤ, A), card(クローバー, _6), card(クローバー, _3), card(クローバー, _4)) | WinningHand.ワンペア
 
     }
 

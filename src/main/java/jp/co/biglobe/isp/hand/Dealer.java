@@ -159,11 +159,11 @@ public class Dealer {
             if (unmatched_count > 1) {
                 return false;
             }
+
             if (e == i) {
                 e++;
                 continue;
             }
-
             return false;
         }
         return true;
@@ -193,6 +193,10 @@ public class Dealer {
                 continue;
             }
 
+            if (royal_cnt == 0) {
+                return false;
+            }
+
             royal_cnt++;
             unmatched_count++;
             if (unmatched_count > 1) {
@@ -205,6 +209,30 @@ public class Dealer {
             return false;
         }
         return true;
+
+
+//        int unmatched_count = 0;
+//        int royal[] = {1, 10, 11, 12, 13};
+//        int royal_cnt = 0;
+//
+//        for (Integer i : list) {
+//            if (royal[royal_cnt] == i) {
+//                royal_cnt++;
+//                continue;
+//            }
+//
+//            royal_cnt++;
+//            unmatched_count++;
+//            if (unmatched_count > 1) {
+//                return false;
+//            }
+//            if (royal[royal_cnt] == i) {
+//                royal_cnt++;
+//                continue;
+//            }
+//            return false;
+//        }
+//        return true;
     }
 
 
